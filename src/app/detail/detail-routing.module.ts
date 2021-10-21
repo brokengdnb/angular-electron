@@ -6,7 +6,8 @@ import { DetailComponent } from './detail.component';
 const routes: Routes = [
   {
     path: 'detail',
-    component: DetailComponent
+    component: DetailComponent,
+    data: { animation: 'isLeft' }
   }
 ];
 

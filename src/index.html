@@ -5,10 +5,21 @@
   <title>Angular Electron</title>
   <base href="/">
 
+  <style>
+    #cdk-describedby-message-container {
+      display: none !important;
+    }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div style="background-color: rgb(252,254,252); height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <img src="./assets/loading-windows98.gif" />
+    </div>
+  </app-root>
 </body>
 </html>

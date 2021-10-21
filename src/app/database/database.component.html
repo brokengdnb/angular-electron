@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutGap="16px" style="padding: 16px">
+  <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-sm="column">
+    <mat-card class="mat-elevation-z5" fxFlex="">
+      <mat-card-title>{{ 'PAGES.DATABASE.SERVER' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{serverInfo.description}}</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z5" fxFlex="">
+      <mat-card-title>{{ 'PAGES.DATABASE.DEVICE' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{deviceInfo.os.family + ' (' + deviceInfo.os.version + ')'}}</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z5" fxFlex="">
+      <mat-card-title>{{ 'PAGES.DATABASE.BROWSER' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{deviceInfo.name + ' (' + deviceInfo.version + ') '}}<i>{{deviceInfo.layout}}</i></mat-card-subtitle>
+    </mat-card>
+  </div>
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px">
+    <mat-card class="example-card" class="mat-elevation-z4" fxFlex="50">
+      <mat-card-title>{{ 'PAGES.DATABASE.LOCAL' | translate }} {{ 'PAGES.DATABASE.TITLE' | translate }}</mat-card-title>
+      <mat-card-subtitle>IndexDB</mat-card-subtitle>
+      <mat-card-content>
+        <p><b>{{ 'PAGES.DATABASE.USED' | translate }}: </b>{{localDatabaseData.usage + ' (' + localDatabaseData.percent + '%)'}}</p>
+        <p><b>{{ 'PAGES.DATABASE.AVAILABLE' | translate }}: </b>{{localDatabaseData.quota}}</p>
+      </mat-card-content>
+      <mat-card-actions style="text-align: right">
+        <button mat-button color="primary">{{ 'PAGES.DATABASE.SYNC' | translate }}</button>
+        <button mat-button color="warn">{{ 'PAGES.DATABASE.DELETE' | translate }}</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="example-card" class="mat-elevation-z4" fxFlex="50">
+      <mat-card-title>{{ 'PAGES.DATABASE.REMOTE' | translate }} {{ 'PAGES.DATABASE.CONNECTION' | translate }}</mat-card-title>
+      <mat-card-subtitle>CouchDB</mat-card-subtitle>
+      <mat-card-content>
+        <div fxLayout="row" fxLayout.lt-md="column" fxFlex="">
+          <mat-form-field fxFlex="">
+            <mat-label>IP</mat-label>
+            <input matInput placeholder="128.0.0.1" value="128.0.0.1">
+          </mat-form-field>
+          <mat-form-field fxFlex="">
+            <mat-label>Port</mat-label>
+            <input matInput placeholder="5984" value="5984">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

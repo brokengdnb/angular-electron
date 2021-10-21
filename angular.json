@@ -15,9 +15,17 @@
           "strict": true
         }
       },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "en": "src/assets/i18n/en.json",
+          "cs": "src/assets/i18n/cs.json"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
+
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { DatabaseComponent } from './database.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
-    data: { animation: 'isRight' }
+    path: 'database',
+    component: DatabaseComponent,
+    data: { animation: 'fade' }
   }
 ];
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {}
+export class DatabaseRoutingModule {}

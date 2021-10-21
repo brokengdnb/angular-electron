@@ -1,12 +1,31 @@
 {
   "PAGES": {
-      "HOME": {
-          "TITLE": "App works !",
-          "GO_TO_DETAIL": "Go to Detail"
-      },
-      "DETAIL": {
-        "TITLE": "Detail page !",
-        "BACK_TO_HOME": "Back to Home"
+    "SETTINGS": {
+      "DEVICE": "Device",
+      "LANGUAGE": "Language"
+    },
+    "HOME": {
+      "TITLE": "App works!",
+      "GO_TO_DETAIL": "Go to Detail",
+      "ENGLISH": "English",
+      "CZECH": "Czech"
+    },
+    "DETAIL": {
+      "TITLE": "Detail page !",
+      "BACK_TO_HOME": "Back to Home"
+    },
+    "DATABASE": {
+      "TITLE": "Database",
+      "USED": "Used",
+      "AVAILABLE": "Available",
+      "SYNC": "Sync",
+      "DELETE": "Delete",
+      "LOCAL": "Local",
+      "CONNECTION": "Connection",
+      "REMOTE": "Remote",
+      "DEVICE": "Device",
+      "SERVER": "Server",
+      "BROWSER": "Browser"
     }
   }
 }

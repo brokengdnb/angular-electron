@@ -3,15 +3,103 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
 
+// set jwt
+const dbConfig = require("./config/db.config");
+const db = require("./models");
+const Role = db.role;
+
+db.mongoose
+  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Successfully connect to MongoDB.");
+    initial();
+  })
+  .catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+  });
+
+function initial() {
+  Role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Role({
+        name: "user"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'user' to roles collection");
+      });
+
+      new Role({
+        name: "moderator"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'moderator' to roles collection");
+      });
+
+      new Role({
+        name: "admin"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+}
+
+
 // Initialize remote module
 require('@electron/remote/main').initialize();
+
+const platform = require('platform');
+console.log(platform)
+
+// SET A WEB SERVER
+const express = require("express");
+const bodyParser = require("body-parser");
+const fileUpload = require('express-fileupload');
+const cors = require('cors')
+const appExpress = express(),
+  http = require('http').Server(appExpress),
+  io = require('socket.io')(http,  {
+    pingTimeout: 30000,
+  });
+
+appExpress.set('view engine', 'pug');
+appExpress.use(express.static(path.join(__dirname, 'public')));
+appExpress.use(bodyParser.json({limit: "50mb"}));
+appExpress.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+appExpress.use(fileUpload());
+appExpress.use(cors());
+
+
+require("./note/note.routes.js")(appExpress);
+// jwt routes
+require("./routes/auth.routes")(appExpress);
+require("./routes/user.routes")(appExpress);
+
+
+const httpServer = http.listen(3300, function(){
+  console.log('*****  YEA *****  web runs on: http://localhost:3300');
+});
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
-function createWindow(): BrowserWindow {
-
+async function createWindow(): Promise<BrowserWindow> {
+  // electron base
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
@@ -25,7 +113,7 @@ function createWindow(): BrowserWindow {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,  // false if you want to run e2e test with Spectron
-      enableRemoteModule : true // true if you want to run e2e test with Spectron or use remote module in renderer context (ie. Angular)
+      enableRemoteModule: true // true if you want to run e2e test with Spectron or use remote module in renderer context (ie. Angular)
     },
   });
 
@@ -41,7 +129,7 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
 
