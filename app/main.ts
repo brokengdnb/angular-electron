@@ -76,18 +76,27 @@ const appExpress = express(),
     pingTimeout: 30000,
   });
 
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+}
+
+
+
 appExpress.set('view engine', 'pug');
 appExpress.use(express.static(path.join(__dirname, 'public')));
 appExpress.use(bodyParser.json({limit: "50mb"}));
 appExpress.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 appExpress.use(fileUpload());
-appExpress.use(cors());
+appExpress.use(cors(corsOptions));
+
 
 
 require("./note/note.routes.js")(appExpress);
 // jwt routes
 require("./routes/auth.routes")(appExpress);
 require("./routes/user.routes")(appExpress);
+
 
 
 const httpServer = http.listen(3300, function(){

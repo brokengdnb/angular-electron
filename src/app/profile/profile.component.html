@@ -1,0 +1,57 @@
+<div fxLayout="column"
+     fxLayout.xs="column"
+     fxFlexFill
+     fxLayoutAlign="center center"
+     *ngIf="currentUser; else loggedOut">
+  <mat-card class="card mat-elevation-z5">
+    <mat-card-title>{{ 'PAGES.PROFILE.TITLE' | translate }}</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+
+      <mat-form-field fxFill>
+        <mat-label>Username</mat-label>
+        <input type="text"
+               matInput
+               disabled
+               [(ngModel)]="currentUser.username"
+               name="username"
+        >
+      </mat-form-field>
+
+      <mat-form-field fxFill>
+        <mat-label>Email</mat-label>
+        <input type="text"
+               matInput
+               disabled
+               [(ngModel)]="currentUser.email"
+               name="username"
+        >
+      </mat-form-field>
+
+      <mat-form-field fxFill>
+        <mat-label>Token</mat-label>
+        <input type="text"
+               matInput
+               disabled
+               [(ngModel)]="currentUser.accessToken"
+               name="username"
+        >
+      </mat-form-field>
+
+      <strong>Roles:</strong>
+      <ul>
+        <li *ngFor="let role of currentUser.roles">
+          {{ role }}
+        </li>
+      </ul>
+
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a routerLink="/register"><button mat-button mat-raised-button>{{ 'PAGES.PROFILE.REGISTER' | translate }}</button></a>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

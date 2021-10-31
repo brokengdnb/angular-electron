@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../shared/shared.module';
+
+
 import { DatabaseRoutingModule } from './database-routing.module';
 import { DatabaseComponent } from './database.component';
 import { MatCardModule } from '@angular/material/card';
@@ -20,7 +23,13 @@ import {MatInputModule} from '@angular/material/input';
   declarations: [DatabaseComponent],
   imports: [
     MatInputModule,
-    CommonModule, DatabaseRoutingModule, MatCardModule, MatButtonModule, FlexLayoutModule, TranslateModule.forRoot({
+    CommonModule,
+    DatabaseRoutingModule,
+    MatCardModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    SharedModule,
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,

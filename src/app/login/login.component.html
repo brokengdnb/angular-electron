@@ -1,0 +1,45 @@
+<div fxLayout="row"
+     fxLayout.xs="column"
+     fxFlexFill
+     fxLayoutAlign="center center"
+     *ngIf="!isLoggedIn">
+  <mat-card class="card mat-elevation-z5">
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <mat-form-field fxFill>
+          <mat-label>Name</mat-label>
+          <input type="text" minlength="3"
+                 maxlength="20" matInput
+                 placeholder=""
+                 required
+                 autofocus
+                 [(ngModel)]="form.username"
+                 name="username"
+          >
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <mat-label>Password</mat-label>
+          <input type="password"
+                 matInput
+                 required
+                 placeholder=""
+                 [(ngModel)]="form.password"
+                 name="password"
+                 minlength="6"
+
+          >
+        </mat-form-field>
+      </div>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary">Login</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

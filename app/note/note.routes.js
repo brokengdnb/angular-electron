@@ -1,6 +1,9 @@
 module.exports = (app) => {
     const notes = require('./note.controller.js');
     const cors = require('cors');
+    const uploadController = require('../upload');
+
+    app.post('/upload', uploadController);
 
     app.use(cors());
 

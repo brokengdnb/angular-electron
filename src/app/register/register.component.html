@@ -1,0 +1,86 @@
+<div fxLayout="row"
+     fxLayout.xs="column"
+     fxFlexFill
+     fxLayoutAlign="center center">
+  <mat-card class="card mat-elevation-z5">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group" fxLayout="column">
+        <mat-form-field fxFill>
+          <mat-label>Email</mat-label>
+          <input type="email" autofocus matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                 placeholder="email@example.com"
+                 name="email"
+
+                 [(ngModel)]="form.email"
+                 required
+          >
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field fxFill>
+          <mat-label>Name</mat-label>
+          <input type="text" minlength="3"
+                 maxlength="20" matInput
+                 placeholder=""
+                 required
+                 [(ngModel)]="form.username"
+                 name="username"
+
+          >
+          <button *ngIf="form.username" matSuffix mat-icon-button aria-label="Clear" (click)="form.username=''">
+            <mat-icon>close</mat-icon>
+          </button>
+
+          <mat-error *ngIf="form.username.length < 3">Name must be at least 3 characters</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field fxFill>
+          <mat-label>Password</mat-label>
+          <input type="password"
+                 matInput
+                 required
+                 placeholder=""
+                 [(ngModel)]="form.password"
+                 name="password"
+                 minlength="6"
+
+          >
+          <mat-error *ngIf="form.password.length < 6">Password must be at least 6 characters</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field fxFill>
+          <mat-label>Roles</mat-label>
+          <mat-select [(ngModel)]="form.roles" name="roles" multiple required>
+            <mat-option *ngFor="let topping of rolesOptions" [value]="topping">{{topping}}</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+      </div>
+      <br>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary">Sign Up</button>
+      </mat-card-actions>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </mat-card>
+</div>

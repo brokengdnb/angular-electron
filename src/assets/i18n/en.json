@@ -1,8 +1,12 @@
 {
   "PAGES": {
     "SETTINGS": {
-      "DEVICE": "Device",
+      "THEME": "Theme",
       "LANGUAGE": "Language"
+    },
+    "PROFILE": {
+      "TITLE": "Profile",
+      "REGISTER": "Register new user"
     },
     "HOME": {
       "TITLE": "App works!",
