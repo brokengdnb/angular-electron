@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+// gallery
+import { SwiperModule } from 'swiper/angular';
 
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -82,6 +84,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     DatabaseModule,
     AppRoutingModule,
     UploadModule,
+    SwiperModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
