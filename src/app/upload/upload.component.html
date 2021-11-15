@@ -1,24 +1,94 @@
-<button mat-raised-button (click)="openUploadDialog()">Upload</button>
+<!--<button mat-raised-button (click)="openUploadDialog()">Upload</button>
 
-<br>
+<br>-->
 
 <swiper
   [direction]="'vertical'"
   [slidesPerView]="1"
-  [spaceBetween]="30"
+  [spaceBetween]="0"
   [mousewheel]="true"
+  [loop]="true"
   [pagination]="{
-      clickable: true
+      clickable: true,
+      type: 'progressbar'
+    }"
+  [history]="{
+      key: 'slide'
     }"
   class="mySwiper"
 >
-  <ng-template swiperSlide>Slide 1</ng-template
-  ><ng-template swiperSlide>Slide 2</ng-template
-><ng-template swiperSlide>Slide 3</ng-template
-><ng-template swiperSlide>Slide 4</ng-template
-><ng-template swiperSlide>Slide 5</ng-template
-><ng-template swiperSlide>Slide 6</ng-template
-><ng-template swiperSlide>Slide 7</ng-template
-><ng-template swiperSlide>Slide 8</ng-template
-><ng-template swiperSlide>Slide 9</ng-template>
+  <ng-template swiperSlide data-history="first">
+
+    <div
+         fxLayout="column"
+         fxLayout.xs="column"
+         fxFlexFill
+         fxLayoutAlign="center center"
+    >
+      <mat-card class="mat-elevation-z5">
+        <mat-card-title>Title</mat-card-title>
+        <mat-card-subtitle>Episode</mat-card-subtitle>
+        <mat-card-content>
+content
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+
+
+  </ng-template
+  ><ng-template swiperSlide data-history="seecond">
+
+
+  <div
+    fxFlexFill
+  >
+    <mat-card class="mat-elevation-z5" fxFill fxFlexFill>
+      <mat-card-title>Title</mat-card-title>
+      <mat-card-subtitle>Episode</mat-card-subtitle>
+      <div>
+        content
+      </div>
+
+    </mat-card>
+  </div>
+
+
+</ng-template
+><ng-template swiperSlide data-history="sdcndscjsdc">
+
+
+  <div
+    fxFlexFill
+  >
+    <mat-card class="mat-elevation-z5" fxFill fxFlexFill>
+      <mat-card-title>Title</mat-card-title>
+      <mat-card-subtitle>Episode</mat-card-subtitle>
+      <mat-card-content>
+        content
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+
+</ng-template
+><ng-template swiperSlide data-history="dawaj">
+
+
+  <div
+    fxFlexFill
+  >
+    <mat-card class="mat-elevation-z5" fxFill fxFlexFill>
+      <mat-card-title>Title</mat-card-title>
+      <mat-card-subtitle>Episode</mat-card-subtitle>
+      <mat-card-content>
+        content
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+
+</ng-template>
 </swiper>

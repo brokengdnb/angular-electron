@@ -25,7 +25,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "npm-run-all -p electron:serve ng:serve",
-    "build": "npm run electron:serve-tsc && ng build --base-href ./",
+    "build": "ng build --base-href ./",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
     "ng:serve": "ng serve -c web -o",
@@ -47,6 +47,7 @@
     "@angular/platform-browser-dynamic": "12.1.2",
     "@angular/router": "12.1.2",
     "@electron/remote": "1.2.0",
+    "angular2-hotkeys": "2.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "1.19.0",
     "cors": "2.8.5",

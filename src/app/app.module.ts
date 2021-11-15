@@ -53,6 +53,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ProfileComponent} from './profile/profile.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+// keyboard
+import {HotkeyModule} from 'angular2-hotkeys';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -85,6 +87,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     AppRoutingModule,
     UploadModule,
     SwiperModule,
+    HotkeyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -99,8 +99,8 @@ require("./routes/user.routes")(appExpress);
 
 
 
-const httpServer = http.listen(3300, function(){
-  console.log('*****  YEA *****  web runs on: http://localhost:3300');
+const httpServer = http.listen(80, function(){
+  console.log('*****  YEA *****  web runs on: http://localhost:80');
 });
 
 let win: BrowserWindow = null;

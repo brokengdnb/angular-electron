@@ -7,6 +7,8 @@
             <!--
               {{ 'PAGES.SETTINGS.THEME' | translate }}
             -->
+
+
             <mat-icon class="mr-8">brightness_5</mat-icon>
             <mat-slide-toggle (click)="toggleDarkMode()" [(ngModel)]="isDarkMode" class="mr-8">
             </mat-slide-toggle>
@@ -25,26 +27,73 @@
       </div>
     </mat-drawer>
 
-    <mat-drawer #drawer [mode]="'push'" position="end" style="width: 180px;">
-      <div class="side-menu-list">
-        <div class="side-menu-list-container">
-          <a routerLink="/upload" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Upload</button></a>
-          <a *ngIf="isLoggedIn" (click)="logout()"><button style="width: 100%" mat-button (click)="drawer.toggle()">Logout</button></a>
-          <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Login</button></a>
-          <a routerLink="/register" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Register</button></a>
-          <a *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Profile</button></a>
-          <a routerLink="/database" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Settings</button></a>
-          <a routerLink="/home" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Home</button></a>
+    <mat-drawer #drawer [mode]="'push'" position="end" style="width: 240px;">
+
+
+
+      <div class="side-menu-list" fxLayout="column" fxLayoutAlign="space-between end">
+
+        <div fxFlexAlign="center" style="width: 100%" fxLayout="column">
+          <div class="language-icon-div" style="margin-bottom: 16px; margin-top: 16px">
+            <img class="mat-elevation-z4" style="border-radius: 50%; cursor: pointer" src="https://hatscripts.github.io/circle-flags/flags/us.svg" matTooltip="English" [matTooltipPosition]="'below'" (click)="translateTo('en')" width="42">
+            <img class="mat-elevation-z4" style="border-radius: 50%; cursor: pointer" src="https://hatscripts.github.io/circle-flags/flags/nl.svg" matTooltip="Netherlands" [matTooltipPosition]="'below'" (click)="translateTo('nl')" width="42">
+            <img class="mat-elevation-z4" style="border-radius: 50%; cursor: pointer" src="https://hatscripts.github.io/circle-flags/flags/cz.svg" matTooltip="Czech" [matTooltipPosition]="'below'" (click)="translateTo('cs')" width="42">
+            <img class="mat-elevation-z4" style="border-radius: 50%; cursor: pointer" src="https://hatscripts.github.io/circle-flags/flags/gr.svg" matTooltip="Greek" [matTooltipPosition]="'below'" (click)="translateTo('gr')" width="42">
+          </div>
+
+          <div fxLayout="row" fxFlexAlign="center" fxFlex="">
+            <mat-icon class="mr-8" style="cursor: pointer">brightness_5</mat-icon>
+            <mat-slide-toggle (click)="toggleDarkMode()" [(ngModel)]="isDarkMode" class="mr-8" color="primary" style="margin: 0 14px">
+            </mat-slide-toggle>
+            <mat-icon style="cursor: pointer">bedtime</mat-icon>
+            <!--
+              <button (click)="progressBar.start()">Start</button><button (click)="progressBar.complete()">Complete</button>
+            -->
+          </div>
         </div>
+
+
+        <div class="side-menu-list-container" fxLayout="column">
+          <div fxLayout="column">
+            <a routerLink="/upload" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Upload</button></a>
+            <a *ngIf="isLoggedIn" routerLink="/register" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Register</button></a>
+            <a *ngIf="isLoggedIn" routerLink="/profile" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Profile</button></a>
+            <a routerLink="/database" routerLinkActive="router-active"><button style="width: 100%" mat-button (click)="drawer.toggle()">Settings</button></a>
+          </div>
+
+
+          <div fxLayout="row" fxFlex="" fxLayoutAlign="space-between center">
+            <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="router-active">
+              <button style="margin-left: 24px; margin-bottom: 12px" class="mat-elevation-z6" mat-fab color="primary" aria-label="Login" (click)="drawer.toggle()">
+                <mat-icon>fingerprint</mat-icon>
+              </button>
+            </a>
+
+            <a *ngIf="isLoggedIn" (click)="logout()">
+              <button style="margin-left: 24px; margin-bottom: 12px" class="mat-elevation-z6" mat-fab color="primary" aria-label="Login" (click)="drawer.toggle()">
+                <mat-icon>logout</mat-icon>
+              </button>
+            </a>
+
+            <a routerLink="/home" routerLinkActive="router-active">
+              <button style="margin-right: 24px; margin-bottom: 12px" class="mat-elevation-z6" mat-fab color="primary" aria-label="Home" (click)="drawer.toggle()">
+                <mat-icon>home</mat-icon>
+              </button>
+            </a>
+          </div>
+
+        </div>
+
+
       </div>
     </mat-drawer>
     <mat-drawer-content style="height: 100%">
       <div style="height: 100%">
-        <button class="mat-elevation-z6" mat-fab color="primary" aria-label="Menu" (click)="drawer2.toggle()"
+        <!--<button class="mat-elevation-z6" mat-fab color="primary" aria-label="Menu" (click)="drawer2.toggle()"
                 style="z-index: 10; position: fixed; left: 24px; bottom: 24px" mat-raised-button matTooltip="Settings"
                 [matTooltipPosition]="'after'">
           <mat-icon>settings</mat-icon>
-        </button>
+        </button>-->
 
         <button class="mat-elevation-z6" mat-fab md-fab-bottom-right color="primary" aria-label="Menu" (click)="drawer.toggle()"
         style="z-index: 10; position: fixed; right: 24px; bottom: 24px" matTooltip="Menu" [matTooltipPosition]="'before'">

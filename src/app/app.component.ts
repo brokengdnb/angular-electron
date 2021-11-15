@@ -21,6 +21,9 @@ import { TokenStorageService } from './_services/token-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {OverlayContainer} from '@angular/cdk/overlay';
 
+// hotkey
+import {Hotkey, HotkeysService} from 'angular2-hotkeys';
+
 
 @Component({
   selector: 'app-root',
@@ -54,9 +57,20 @@ export class AppComponent {
     private translate: TranslateService,
     private snackBarLogin: MatSnackBar,
     private themeService: ThemeService,
+    private hotkeysService: HotkeysService
   ) {
     console.log('APP_CONFIG', APP_CONFIG);
     const localeCookieExists: boolean = this.cookieService.check('locale');
+
+    this.hotkeysService.add(new Hotkey('down', (event: KeyboardEvent): boolean => {
+      console.log('Typed down hotkey');
+      return false; // Prevent bubbling
+    }));
+
+    this.hotkeysService.add(new Hotkey('meta+\\', (event: KeyboardEvent): boolean => {
+      console.log('Secret message');
+      return false;
+    }, undefined, 'Send a secret message to the console.'));
 
     if (localeCookieExists) {
       this.translate.setDefaultLang(this.cookieService.get('locale'));

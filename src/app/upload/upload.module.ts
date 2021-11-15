@@ -13,10 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './dialog/dialog.component';
 import { UploadService } from './upload.service';
 import {SwiperModule} from "swiper/angular";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   // eslint-disable-next-line max-len
-    imports: [CommonModule, MatButtonModule, MatDialogModule, MatListModule, FlexLayoutModule, HttpClientModule, BrowserAnimationsModule, MatProgressBarModule, SwiperModule],
+    imports: [CommonModule, MatButtonModule, MatDialogModule, MatListModule, FlexLayoutModule, HttpClientModule, BrowserAnimationsModule, MatProgressBarModule, SwiperModule, MatCardModule],
   declarations: [UploadComponent, DialogComponent],
   exports: [UploadComponent],
   entryComponents: [DialogComponent], // Add the DialogComponent as entry component
