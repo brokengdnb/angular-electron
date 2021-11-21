@@ -9,7 +9,7 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(dbConfig.URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -99,8 +99,8 @@ require("./routes/user.routes")(appExpress);
 
 
 
-const httpServer = http.listen(80, function(){
-  console.log('*****  YEA *****  web runs on: http://localhost:80');
+const httpServer = http.listen(3300, function(){
+  console.log('*****  YEA *****  web runs on: http://localhost:3300');
 });
 
 let win: BrowserWindow = null;
