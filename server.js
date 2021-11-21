@@ -3,7 +3,7 @@ let config = require('./app/config/db.config.js');
 
 // SSL
 const https = require('https');
-
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 
 //set a port 3000 !!!
 const webDataPort = 80;
@@ -99,6 +99,9 @@ appe.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50
 // SET FILE UPLOADER
 appe.use(fileUpload());
 appe.use(cors());
+
+appe.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+
 
 let download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
@@ -285,12 +288,7 @@ const setImportValueToJSON = (fn, parameter) =>
 //setImportValueToJSON("./config/database.json", arg)
 
 
-appe.use(function(req, res, next) {
-  if ((req.get('X-Forwarded-Proto') !== 'https')) {
-    res.redirect('https://' + req.get('Host') + req.url);
-  } else
-    next();
-});
+
 
 const httpsServer = https.createServer(credentials, appe).listen(443)
 
