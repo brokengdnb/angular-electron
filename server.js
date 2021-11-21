@@ -1,6 +1,9 @@
 // get config
 let config = require('./app/config/db.config.js');
 
+// SSL
+const https = require('https');
+
 
 //set a port 3000 !!!
 const webDataPort = 80;
@@ -79,6 +82,12 @@ appe.set('view engine', 'pug');
 //appe.use(express.static(path.join(__dirname,  'public')));
 
 // ssl
+const appDomain = "app.brokeng.com";
+const privateKey  = fs.readFileSync(`/etc/letsencrypt/live/${appDomain}/privkey.pem`, 'utf8');
+const certificate = fs.readFileSync(`/etc/letsencrypt/live/${appDomain}/fullchain.pem`, 'utf8');
+const credentials = {key: privateKey, cert: certificate};
+
+
 appe.use("/.well-known", express.static(path.join(__dirname, "/ssl/")));
 
 appe.use(bodyParser.json({limit: "50mb"}));
@@ -275,6 +284,7 @@ const setImportValueToJSON = (fn, parameter) =>
 
 //setImportValueToJSON("./config/database.json", arg)
 
+const httpsServer = https.createServer(credentials, appe).listen(443)
 
 const httpServer = http.listen(webDataPort, function(){
   //console.log('   *****  YEA *****  web bitch runing on: http://localhost:' + webDataPort);
