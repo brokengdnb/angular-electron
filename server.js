@@ -285,13 +285,19 @@ const setImportValueToJSON = (fn, parameter) =>
 //setImportValueToJSON("./config/database.json", arg)
 
 
-
+appe.use(function(req, res, next) {
+  if ((req.get('X-Forwarded-Proto') !== 'https')) {
+    res.redirect('https://' + req.get('Host') + req.url);
+  } else
+    next();
+});
 
 const httpsServer = https.createServer(credentials, appe).listen(443)
 
-const httpServer = http.listen(webDataPort, function(req, res){
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
+const httpServer = http.listen(webDataPort, function(){
+  //console.log('   *****  YEA *****  web bitch runing on: http://localhost:' + webDataPort);
+  // opens the url in the default browser
+  //opn('http://localhost:3000');
 });
 
 
