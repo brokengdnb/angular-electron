@@ -5,7 +5,7 @@ module.exports = {
   DB: "bezkoder_db",
   "export":"/Users/gl/Downloads/Torrents/export",
   "import":"/Users/gl/Downloads/",
-  "ssl":"/Users/gl/WebstormProjects/angular-electron/ssl",
+  "ssl":"/ssl/",
   "public":"/public",
   "effects":"/Users/gl/Documents/",
   "movies":"/Users/gl/Movies/"

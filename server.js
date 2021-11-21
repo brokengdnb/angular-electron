@@ -1,5 +1,5 @@
 // get config
-let config = require('./config/db.config.js');
+let config = require('./app/config/db.config.js');
 
 
 //set a port 3000 !!!
@@ -79,8 +79,7 @@ appe.set('view engine', 'pug');
 //appe.use(express.static(path.join(__dirname,  'public')));
 
 // ssl
-appe.use("/.well-known", express.static(config.ssl));
-
+appe.use("/.well-known", express.static(path.join(__dirname, "/ssl/")));
 
 appe.use(bodyParser.json({limit: "50mb"}));
 appe.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
@@ -253,7 +252,7 @@ appe.get("/", (req, res) => {
 
   console.log("OK" + ' Node.js  ' + process.versions["node"]);
   console.log("OK" + ' Website  ' + "http://127.0.0.1:" + webDataPort);
-  console.log("OK" + ' "ssl" ' + config.ssl);
+  console.log("OK" + ' "ssl" ' + path.join(__dirname, config.ssl));
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
