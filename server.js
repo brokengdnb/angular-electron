@@ -284,12 +284,14 @@ const setImportValueToJSON = (fn, parameter) =>
 
 //setImportValueToJSON("./config/database.json", arg)
 
+
+
+
 const httpsServer = https.createServer(credentials, appe).listen(443)
 
-const httpServer = http.listen(webDataPort, function(){
-  //console.log('   *****  YEA *****  web bitch runing on: http://localhost:' + webDataPort);
-  // opens the url in the default browser
-  //opn('http://localhost:3000');
+const httpServer = http.listen(webDataPort, function(req, res){
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
 });
 
 
