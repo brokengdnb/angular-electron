@@ -77,7 +77,7 @@ const appe = express(),
 
 // SET PUG template rendering
 appe.set('view engine', 'pug');
-
+appe.set('views','./views');
 // SET public and upload folder for backup/restore
 //appe.use(express.static(path.join(__dirname,  'public')));
 
