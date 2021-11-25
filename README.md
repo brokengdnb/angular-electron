@@ -32,6 +32,18 @@ With this sample, you can:
 
 /!\ Angular CLI & Electron Builder needs Node 14 or later to work correctly.
 
+## Server
+
+``` bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+apt-get install -y build-essential
+
+npm install -g @angular/cli
+```
+
 ## Getting Started
 
 *Clone this repository locally:*
