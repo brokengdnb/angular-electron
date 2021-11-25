@@ -76,8 +76,13 @@ const appe = express(),
 
 
 // SET PUG template rendering
-appe.set('view engine', 'pug');
-appe.set('views',path.join(__dirname, '/views'));
+//appe.set('view engine', 'pug');
+//appe.set('views',path.join(__dirname, '/views'));
+
+appe.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 // SET public and upload folder for backup/restore
 //appe.use(express.static(path.join(__dirname,  'public')));
 
