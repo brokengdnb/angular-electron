@@ -24,9 +24,11 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
-
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,10 +42,7 @@
               "src/styles.scss",
               "node_modules/swiper/swiper-bundle.css"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "./angular.webpack.js"
-            }
+            "scripts": []
           },
           "configurations": {
             "dev": {
