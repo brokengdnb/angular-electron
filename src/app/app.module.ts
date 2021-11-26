@@ -56,6 +56,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 // keyboard
 import {HotkeyModule} from 'angular2-hotkeys';
 
+// url hash
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -99,9 +102,10 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     ReactiveFormsModule
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     CookieService,
-    authInterceptorProviders
-  ],
+    authInterceptorProviders],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

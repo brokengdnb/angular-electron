@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { APP_CONFIG } from '../environments/environment';
 import {Router, RouterOutlet} from '@angular/router';
 
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 
 import { fader } from './app.animations';
@@ -34,7 +36,9 @@ import {Hotkey, HotkeysService} from 'angular2-hotkeys';
     // slider,
     // transformer,
     // stepper
-  ]
+  ],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+
 })
 
 
@@ -46,9 +50,11 @@ export class AppComponent {
 
   isDarkMode: boolean;
 
-
+  location: Location;
   private roles: string[] = [];
   constructor(
+    location: Location,
+
     private tokenStorageService: TokenStorageService,
     private cookieService: CookieService,
     private router: Router,
@@ -59,6 +65,8 @@ export class AppComponent {
     private themeService: ThemeService,
     private hotkeysService: HotkeysService
   ) {
+
+    this.location = location;
     console.log('APP_CONFIG', APP_CONFIG);
     const localeCookieExists: boolean = this.cookieService.check('locale');
 
@@ -108,6 +116,14 @@ export class AppComponent {
   ngOnInit(): void {
 
 
+  }
+
+  goForward() {
+    this.location.forward();
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   toggleDarkMode() {
