@@ -13,21 +13,12 @@ import { UploadComponent } from './upload/upload.component';
 
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent, data: { animation: 'isRight' } },
-  { path: 'login', component: LoginComponent, data: { animation: 'isRight' } },
-  { path: 'profile', component: ProfileComponent, data: { animation: 'isRight' } },
-  { path: 'upload', component: UploadComponent, data: { animation: 'isRight' } },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-    data: { animation: 'fade' }
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent,
-    data: { animation: 'fade' }
-  }
+  { path: 'register', component: RegisterComponent, data: { animation: 'fade' } },
+  { path: 'login', component: LoginComponent, data: { animation: 'fade' } },
+  { path: 'profile', component: ProfileComponent, data: { animation: 'fade' } },
+  { path: 'upload', component: UploadComponent, data: { animation: 'fade' } },
+  { path: '', redirectTo: 'home', pathMatch: 'full', data: { animation: 'fade' }},
+  { path: '**', component: PageNotFoundComponent, data: { animation: 'fade' }}
 ];
 
 @NgModule({
