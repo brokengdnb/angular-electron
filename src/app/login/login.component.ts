@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
   particlesUrl = "http://foo.bar/particles.json";
 
   /* or the classic JavaScript object */
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   particlesOptions = {
     background: {
       color: {
@@ -93,7 +94,7 @@ export class LoginComponent implements OnInit {
       move: {
         direction: "none",
         enable: true,
-        outMode: "bounce",
+        outMode: "none",
         random: true,
         speed: 1,
         straight: false
