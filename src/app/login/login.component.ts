@@ -92,9 +92,7 @@ export class LoginComponent implements OnInit {
         enable: true
       },
       move: {
-        direction: "none",
         enable: true,
-        outMode: "none",
         random: true,
         speed: 1,
         straight: false
