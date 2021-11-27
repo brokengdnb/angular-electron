@@ -1,9 +1,14 @@
+<ng-particles style="z-index: 1;" [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)" (particlesInit)="particlesInit($event)"></ng-particles>
+
 <div fxLayout="row"
      fxLayout.xs="column"
      fxFlexFill
      fxLayoutAlign="center center"
      *ngIf="!isLoggedIn">
-  <mat-card class="card mat-elevation-z5">
+
+
+
+  <mat-card class="card mat-elevation-z5" style="z-index: 99;">
     <form
       *ngIf="!isLoggedIn"
       name="form"

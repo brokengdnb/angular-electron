@@ -62,9 +62,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
+import {NgParticlesModule} from "ng-particles";
+
 @NgModule({
   declarations: [AppComponent, NavBarComponent, RegisterComponent, LoginComponent, ProfileComponent],
   imports: [
+    NgParticlesModule,
     BrowserModule,
     FlexLayoutModule,
     MatExpansionModule,
