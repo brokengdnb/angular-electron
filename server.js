@@ -124,6 +124,8 @@ const appe = express(),
 
 appe.use(express.static(path.join(__dirname, "dist")))
 
+appe.use(bodyParser.urlencoded({ extended: false }));
+appe.use(bodyParser.json());
 
 // jwt
 
@@ -151,8 +153,8 @@ const credentials = {key: privateKey, cert: certificate};
 
 appe.use("/.well-known", express.static(path.join(__dirname, "/ssl/")));
 
-appe.use(bodyParser.json({limit: "50mb"}));
-appe.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+
+
 
 //SET MULTER
 //app.use(multer());
