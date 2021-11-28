@@ -22,7 +22,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 // set jwt
-const db = require("./models");
+const db = require("./app/models");
 const Role = db.role;
 
 db.mongoose
@@ -156,10 +156,14 @@ appe.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50
 
 //SET MULTER
 //app.use(multer());
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+}
 
 // SET FILE UPLOADER
 appe.use(fileUpload());
-appe.use(cors());
+appe.use(cors(corsOptions));
 
 appe.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 
