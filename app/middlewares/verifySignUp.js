@@ -4,7 +4,7 @@ const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
   // Username
-  console.log(req.body);
+console.log(req);
 
   User.findOne({
     username: req.body.username
