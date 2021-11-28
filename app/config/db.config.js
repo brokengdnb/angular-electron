@@ -3,10 +3,10 @@ module.exports = {
   URL: "mongodb+srv://jakub:nelinecka@cluster1.lzq3y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   PORT: 27017,
   DB: "bezkoder_db",
-  "export":"/Users/gl/Downloads/Torrents/export",
-  "import":"/Users/gl/Downloads/",
-  "ssl":"/ssl/",
-  "public":"/public",
-  "effects":"/Users/gl/Documents/",
-  "movies":"/Users/gl/Movies/"
+  export:"/Users/gl/Downloads/Torrents/export",
+  import:"/Users/gl/Downloads/",
+  ssl:"/ssl/",
+  public:"/public",
+  effects:"/Users/gl/Documents/",
+  movies:"/Users/gl/Movies/"
 };

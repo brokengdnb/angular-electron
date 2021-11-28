@@ -31,15 +31,16 @@ export class RegisterComponent implements OnInit {
   selectedItem: string;
   rolesOptions: string[] = ['admin', 'user', 'moderator'];
 
+  usernameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3)
+  ]);
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
-  roleFormControl = new FormControl('', [
-    Validators.required
-  ]);
   matcher = new MyErrorStateMatcher();
   constructor(private authService: AuthService) { }
 
@@ -47,8 +48,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { email, username, password, roles} = this.form;
-    this.authService.register(username, email, password, roles).subscribe(
+    this.authService.register(this.usernameFormControl.value, this.emailFormControl.value, this.form.password, this.form.roles).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

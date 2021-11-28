@@ -3,7 +3,7 @@ import {HttpClient, HttpEventType, HttpRequest, HttpResponse} from '@angular/com
 import {Observable, Subject} from 'rxjs';
 
 
-const url = 'http://localhost:3300/upload';
+const url = 'https://app.brokeng.com/upload';
 
 @Injectable()
 export class UploadService {
