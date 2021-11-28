@@ -38,8 +38,9 @@
                  name="username"
                 autocomplete="username"
           >
-
-          <mat-error *ngIf="usernameFormControl < 3">Name must be at least 3 characters</mat-error>
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field fxFill>
