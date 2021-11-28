@@ -35,17 +35,151 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  id = "tsparticles";
+  id = 'tsparticles';
 
   /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
-  particlesUrl = "http://foo.bar/particles.json";
+  particlesUrl = 'http://foo.bar/particles.json';
 
   /* or the classic JavaScript object */
   // eslint-disable-next-line @typescript-eslint/member-ordering
+  particlesOptions2 = {
+    fpsLimit: 60,
+    fullScreen: {
+      enable: true
+    },
+    particles: {
+      number: {
+        value: 0
+      },
+      color: {
+        value: '#ffffff'
+      },
+      shape: {
+        type: ['circle', 'circle']
+      },
+      opacity: {
+        value: { min: 0, max: 1 },
+        animation: {
+          enable: true,
+          speed: 1,
+          startValue: 'max',
+          destroy: 'min'
+        }
+      },
+      size: {
+        value: { min: 1, max: 3 }
+      },
+      life: {
+        duration: {
+          sync: true,
+          value: 7
+        },
+        count: 1
+      },
+      move: {
+        enable: true,
+        gravity: {
+          enable: true
+        },
+        drift: {
+          min: -2,
+          max: 2
+        },
+        speed: { min: 10, max: 30 },
+        decay: 0.1,
+        direction: 'none',
+        random: false,
+        straight: false,
+        outModes: {
+          default: 'destroy',
+          top: 'none'
+        }
+      },
+      rotate: {
+        value: {
+          min: 0,
+          max: 360
+        },
+        direction: 'random',
+        move: true,
+        animation: {
+          enable: true,
+          speed: 60
+        }
+      },
+      tilt: {
+        direction: 'random',
+        enable: true,
+        move: true,
+        value: {
+          min: 0,
+          max: 360
+        },
+        animation: {
+          enable: true,
+          speed: 60
+        }
+      },
+      roll: {
+        darken: {
+          enable: true,
+          value: 25
+        },
+        enable: true,
+        speed: {
+          min: 15,
+          max: 25
+        }
+      },
+      wobble: {
+        distance: 30,
+        enable: true,
+        move: true,
+        speed: {
+          min: -15,
+          max: 15
+        }
+      }
+    },
+    detectRetina: true,
+    background: {
+      color: '#000000'
+    },
+    emitters: {
+      direction: 'none',
+      spawnColor: {
+        value: 'red',
+        animation: {
+          l: {
+            enable: true,
+            offset: {
+              min: 0,
+              max: 100
+            },
+            speed: 0,
+            sync: false
+          }
+        }
+      },
+      life: {
+        count: 0,
+        duration: 0.1,
+        delay: 0.6
+      },
+      rate: {
+        delay: 0.1,
+        quantity: 100
+      },
+      size: {
+        width: 0,
+        height: 0
+      }
+    }
+  };
   particlesOptions = {
     background: {
       color: {
-        value: "#000"
+        value: '#000'
       }
     },
     fpsLimit: 30,
@@ -53,11 +187,11 @@ export class LoginComponent implements OnInit {
       events: {
         onClick: {
           enable: false,
-          mode: "push"
+          mode: 'push'
         },
         onHover: {
           enable: false,
-          mode: "repulse"
+          mode: 'repulse'
         },
         resize: true
       },
@@ -79,10 +213,10 @@ export class LoginComponent implements OnInit {
     },
     particles: {
       color: {
-        value: "#ffffff"
+        value: '#ffffff'
       },
       links: {
-        color: "#ffffff",
+        color: '#ffffff',
         distance: 150,
         enable: true,
         opacity: 0.5,
@@ -108,7 +242,7 @@ export class LoginComponent implements OnInit {
         value: 0.5
       },
       shape: {
-        type: "circle"
+        type: 'circle'
       },
       size: {
         random: true,
