@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+/*
 import PouchDB from './../../../node_modules/pouchdb';
+*/
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -15,19 +17,19 @@ export class DetailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder
   ) {
-    this.db = new PouchDB('first');
+    /*this.db = new PouchDB('first');
     this.addForm = new FormGroup({
       _id: new FormControl(),
       name: new FormControl(),
       emailid: new FormControl()
-    });
+    });*/
   }
 
   ngOnInit(): void {
     console.log('DetailComponent INIT');
    }
 
-  getAll() {
+  /*getAll() {
     // get all items from storage including details
     return this.db.allDocs({
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -95,5 +97,5 @@ export class DetailComponent implements OnInit {
       emailid: this.addForm.value.emailid
     };
     this.create(pouchForm);
-  }
+  }*/
 }

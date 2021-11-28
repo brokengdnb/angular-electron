@@ -15,25 +15,68 @@ const path = require('path')
 // color output terminal ... yea my UX get over it
 const ansi = require ('ansicolor').nice
 
+
 // database
 const mongoose = require("mongoose");
 
-// CONNECT TO DATABASE
 mongoose.Promise = global.Promise;
-mongoose.connect(config.URL, {
-  useNewUrlParser: true,
-  // (node:12129) DeprecationWarning:
-  useUnifiedTopology: true,
-  useFindAndModify: false
-}).then(() => {
-  console.log(("OK") + (" Database " + config.URL));
-  console.log("---------------------------------------------");
 
-}).catch(err => {
-  console.log("Could not connect to the database. Exiting now...", err);
-  // prevent exit and render how to set up mongodb
-  //process.exit();
-});
+// set jwt
+const db = require("./models");
+const Role = db.role;
+
+db.mongoose
+  .connect(config.URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log(("OK") + (" Database " + config.URL));
+    console.log("---------------------------------------------");
+
+    initial();
+  })
+  .catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+  });
+
+function initial() {
+  Role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Role({
+        name: "user"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'user' to roles collection");
+      });
+
+      new Role({
+        name: "moderator"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'moderator' to roles collection");
+      });
+
+      new Role({
+        name: "admin"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+}
+
 
 
 // API SERVER
@@ -80,6 +123,17 @@ const appe = express(),
 //appe.set('views',path.join(__dirname, '/views'));
 
 appe.use(express.static(path.join(__dirname, "dist")))
+
+
+// jwt
+
+require("./app/note/note.routes.js")(appe);
+// jwt routes
+require("./app/routes/auth.routes")(appe);
+require("./app/routes/user.routes")(appe);
+
+
+
 
 appe.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/dist/index.html'));

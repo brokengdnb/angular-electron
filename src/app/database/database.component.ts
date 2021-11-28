@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+/*
 import PouchDB from './../../../node_modules/pouchdb';
+*/
 import { TranslateService } from '@ngx-translate/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -23,7 +25,7 @@ export class DatabaseComponent implements OnInit {
   constructor(
     private http: HttpClient
   ) {
-    this.db = new PouchDB('first');
+    /*this.db = new PouchDB('first');*/
   }
 
   ngOnInit(): void {

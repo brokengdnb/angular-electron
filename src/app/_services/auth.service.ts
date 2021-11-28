@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:3300/api/auth/';
+const AUTH_API = 'https://app.brokeng.com/api/auth/';
 
 const httpOptions = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
