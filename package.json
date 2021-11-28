@@ -46,6 +46,7 @@
     "@angular/platform-browser": "12.1.2",
     "@angular/platform-browser-dynamic": "12.1.2",
     "@angular/router": "12.1.2",
+    "@angular/service-worker": "12.1.2",
     "@electron/remote": "1.2.0",
     "angular2-hotkeys": "2.4.0",
     "ansicolor": "1.1.95",

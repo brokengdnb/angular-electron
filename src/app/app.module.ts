@@ -63,6 +63,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
 import {NgParticlesModule} from "ng-particles";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent, RegisterComponent, LoginComponent, ProfileComponent],
@@ -102,7 +104,13 @@ import {NgParticlesModule} from "ng-particles";
       }
     }),
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
