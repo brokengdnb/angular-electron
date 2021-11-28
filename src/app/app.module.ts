@@ -62,9 +62,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
-import {NgParticlesModule} from "ng-particles";
+import {NgParticlesModule} from 'ng-particles';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent, RegisterComponent, LoginComponent, ProfileComponent],
@@ -106,10 +105,10 @@ import { environment } from '../environments/environment';
     MatInputModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
+      enabled: true,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:10000'
     })
   ],
   providers: [
